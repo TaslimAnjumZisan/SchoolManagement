@@ -15,5 +15,6 @@ namespace SchoolManagement.Controllers
             var teacherList= await _teachersManager.GetAllTeacherAsync();
             return View(teacherList);
         }
+        
     }
 }

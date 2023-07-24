@@ -86,39 +86,39 @@ namespace SchoolManagement.Controllers
             }
         }
 
-        public async Task<IActionResult>Delete(int id)
-        {
-            try
-            {
-                var model = await _studentManager.GetStudentById(id);
-                return View(model);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+        //public async Task<IActionResult>Delete(int id)
+        //{
+        //    try
+        //    {
+        //        var model = await _studentManager.GetStudentById(id);
+        //        return View(model);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //}
 
-        public async Task<IActionResult>Delete( StudentDeleteModel model)
-        {
-            try
-            {
-                if(ModelState.IsValid)
-                {
-                    Boolean result = await _studentManager.DeleteStudent(model);
-                    if (result)
-                    {
-                        return RedirectToAction("Index");
-                    }
-                    else
-                        return RedirectToAction("Delete");
-                }
-                return View(model);
+        //public async Task<IActionResult>Delete( StudentDeleteModel model)
+        //{
+        //    try
+        //    {
+        //        if(ModelState.IsValid)
+        //        {
+        //            Boolean result = await _studentManager.DeleteStudent(model);
+        //            if (result)
+        //            {
+        //                return RedirectToAction("Index");
+        //            }
+        //            else
+        //                return RedirectToAction("Delete");
+        //        }
+        //        return View(model);
 
-            }catch(Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+        //    }catch(Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //}
     }
 }
