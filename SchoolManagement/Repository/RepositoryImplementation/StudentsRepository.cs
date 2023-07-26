@@ -2,6 +2,7 @@
 using SchoolManagement.Data;
 using SchoolManagement.Models;
 using SchoolManagement.Repository.RepositoryInterface;
+using SchoolManagement.ViewModel.Student;
 
 namespace SchoolManagement.Repository.RepositoryImplementation
 {
@@ -21,6 +22,32 @@ namespace SchoolManagement.Repository.RepositoryImplementation
             students = _schoolManagementDbContext.Students.ToList();
             return students;
         }
+
+        public async Task<List<StudentIndexModel>> GetAllTeacherStudentsAsync()
+        {
+            List<StudentIndexModel> students = new List<StudentIndexModel>();
+            // students = _schoolManagementDbContext.Students.ToList();
+
+            students = await (from t in _schoolManagementDbContext.Teachers
+                              join d in _schoolManagementDbContext.Students on t.TeacherId equals d.TeacherId
+                              select new StudentIndexModel()
+                              {
+                                  TeacherId = t.TeacherId,
+                                  Name = d.Name,
+                                  TeacherName=t.Name,
+                                  StudentId=d.StudentId,
+                                  Age=d.Age,
+                                  Cgpa=d.Cgpa,
+                                  IsGender=d.IsGender,
+                                  Email=d.Email,
+                                  Phone=d.Phone,
+                                  Password=d.Password,
+                              }).ToListAsync();
+
+
+            return students;
+        }
+
 
         public async Task<Boolean> CreateStudentAsync(Student model, CancellationToken cancellationToken = default)
         {
@@ -46,7 +73,7 @@ namespace SchoolManagement.Repository.RepositoryImplementation
         public async Task<Boolean>UpdateStudent(Student model, CancellationToken cancellation = default)
         {
             var isUpdate = false;
-            var exists= await _schoolManagementDbContext.Students.AnyAsync(x=> x.Email.Trim().ToLower()==model.Email.Trim().ToLower()&& x.Std_Id==model.Std_Id);
+            var exists= await _schoolManagementDbContext.Students.AnyAsync(x=> x.Email.Trim().ToLower()==model.Email.Trim().ToLower()&& x.StudentId == model.StudentId);
             if(cancellation.IsCancellationRequested==false)
             {
                 if(!exists)
@@ -68,7 +95,7 @@ namespace SchoolManagement.Repository.RepositoryImplementation
         public async Task<Boolean> DeleteStudent(Student student, CancellationToken cancellationToken = default)
         {
             Boolean isDelete=false;
-            var exists = await _schoolManagementDbContext.Students.Where(x => x.Std_Id == student.Std_Id).FirstOrDefaultAsync();
+            var exists = await _schoolManagementDbContext.Students.Where(x => x.StudentId == student.StudentId).FirstOrDefaultAsync();
             if(cancellationToken.IsCancellationRequested==false)
             {
                 

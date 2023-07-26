@@ -28,7 +28,7 @@ namespace SchoolManagement.Repository.RepositoryImplementation
                 if(!exists)
                 {
                     await _schoolManagementDbContext.Teachers.AddAsync(model);
-                    _schoolManagementDbContext.SaveChangesAsync();
+                    await _schoolManagementDbContext.SaveChangesAsync();
                     return isCreate = true;
 
                 }
@@ -36,8 +36,47 @@ namespace SchoolManagement.Repository.RepositoryImplementation
             return isCreate;
         }
 
-        
+        public async Task<Teacher> GetTeacherBy(int id)
+        {
+            var teacher= await _schoolManagementDbContext.Teachers.FindAsync(id);
+            return teacher;
+        }
 
-        
+        public async Task<Boolean> UpdateTeacher(Teacher model, CancellationToken cancellationToken = default)
+        {
+            var isUpdate = false;
+            var exists= await _schoolManagementDbContext.Teachers.AnyAsync(x=> x.Email.Trim().ToLower()== model.Email.Trim().ToLower());
+            if(cancellationToken.IsCancellationRequested==false)
+            {
+                if(exists)
+                {
+                     _schoolManagementDbContext.Teachers.Update(model);
+                    await _schoolManagementDbContext.SaveChangesAsync();
+                    return isUpdate = true;
+
+                }
+            }
+            return isUpdate;
+
+        }
+
+        public async Task<Teacher>GetTeacherById(int id)
+        {
+           var teacher =await _schoolManagementDbContext.Teachers.FindAsync(id);
+            return teacher;
+        }
+
+        public async Task<Boolean>DeleteTeacher(Teacher teacher, CancellationToken cancellationToken=default)
+        {
+            var isDelete = false;
+            var exist= await _schoolManagementDbContext.Teachers.Where(x=> x.TeacherId==teacher.TeacherId).SingleOrDefaultAsync();
+            if(cancellationToken.IsCancellationRequested == false)
+            {
+                _schoolManagementDbContext.Teachers.Remove(teacher);
+                await _schoolManagementDbContext.SaveChangesAsync();
+                return isDelete = true;
+            }
+            return isDelete;
+        }
     }
 }

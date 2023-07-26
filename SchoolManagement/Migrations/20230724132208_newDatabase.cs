@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SchoolManagement.Migrations
 {
     /// <inheritdoc />
-    public partial class SchoolManagement : Migration
+    public partial class newDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,8 +32,9 @@ namespace SchoolManagement.Migrations
                 name: "Students",
                 columns: table => new
                 {
-                    Std_Id = table.Column<int>(type: "int", nullable: false)
+                    StudentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    TeacherId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AdmitionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Age = table.Column<int>(type: "int", nullable: false),
@@ -41,12 +42,11 @@ namespace SchoolManagement.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Cgpa = table.Column<double>(type: "float", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TeacherId = table.Column<int>(type: "int", nullable: false)
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Students", x => x.Std_Id);
+                    table.PrimaryKey("PK_Students", x => x.StudentId);
                     table.ForeignKey(
                         name: "FK_Students_Teachers_TeacherId",
                         column: x => x.TeacherId,

@@ -1,1 +1,46 @@
-﻿
+﻿@model List<SchoolManagement.ViewModel.Student.StudentIndexModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Student Details</h1>
+<table class="table">
+    <thead class="table-striped">
+        <tr>
+            <td>Teacher Name</td>
+            <td>Student Name</td>
+            <td>Age</td>
+            <td>Gender</td>
+            <td>Email</td>
+            <td>Phone</td>
+            <td>CGPA</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+
+    @foreach( var obj in Model)
+    {
+        <tr>
+            <td>@obj.TeacherName</td>
+            <td>@obj.Name</td>
+            <td>@obj.Age</td>
+            <td>@obj.IsGender</td>
+            <td>@obj.Email</td>
+            <td>@obj.Phone</td>
+            <td>@obj.Cgpa</td>
+            <td>
+                <a asp-action="Edit" class="btn btn-primary" asp-controller="Student" asp-route-id="@obj.StudentId">Edit</a>
+                <a asp-action="Delete" class="btn btn-danger" asp-controller="Student" asp-route-id="@obj.StudentId">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<table>
+    <tr>
+        <td>
+            <a asp-action="Create" class="btn btn-primary" asp-controller="Student">Add New Student</a>
+        </td>
+    </tr>
+
+</table>

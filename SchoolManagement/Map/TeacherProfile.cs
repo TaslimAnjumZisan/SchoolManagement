@@ -9,7 +9,10 @@ namespace SchoolManagement.Map
         public TeacherProfile()
         {
             CreateMap<Teacher, TeacherIndexModel>().ReverseMap();
-           
+            CreateMap<Teacher, TeacherCreateModel>().ReverseMap();
+
+            CreateMap<Teacher, TeacherEditModel>().ReverseMap();
+            CreateMap<Teacher, TeacherDeleteModel>().ReverseMap();
         }
     }
 }

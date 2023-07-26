@@ -21,6 +21,13 @@ namespace SchoolManagement.Manager.ManagerImplementation
             var studentList = _mapper.Map<List<Student>, List<StudentIndexModel>>(existListOfStudent);
             return studentList;
         }
+
+        public async Task<List<StudentIndexModel>> GetAllTeacherStudentsAsync()
+        {
+            var existListOfStudent = await _studentRepository.GetAllTeacherStudentsAsync();
+           
+            return existListOfStudent;
+        }
         public async Task<Boolean> CreateStudentAsync(StudentCreateModel model)
 
         {
@@ -50,7 +57,7 @@ namespace SchoolManagement.Manager.ManagerImplementation
             return student; 
         }
 
-        public async Task<bool> DeleteStudent(StudentDeleteModel model)
+        public async Task<Boolean> DeleteStudent(StudentDeleteModel model)
         {
             var student = _mapper.Map<StudentDeleteModel, Student>(model);
             Boolean result= await _studentRepository.DeleteStudent(student);

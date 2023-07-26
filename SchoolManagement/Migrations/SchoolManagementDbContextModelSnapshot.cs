@@ -24,11 +24,11 @@ namespace SchoolManagement.Migrations
 
             modelBuilder.Entity("SchoolManagement.Models.Student", b =>
                 {
-                    b.Property<int>("Std_Id")
+                    b.Property<int>("StudentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Std_Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"));
 
                     b.Property<DateTime>("AdmitionDate")
                         .HasColumnType("datetime2");
@@ -61,7 +61,7 @@ namespace SchoolManagement.Migrations
                     b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
-                    b.HasKey("Std_Id");
+                    b.HasKey("StudentId");
 
                     b.HasIndex("TeacherId");
 
@@ -103,13 +103,18 @@ namespace SchoolManagement.Migrations
 
             modelBuilder.Entity("SchoolManagement.Models.Student", b =>
                 {
-                    b.HasOne("SchoolManagement.Models.Teacher", "Teachers")
-                        .WithMany()
+                    b.HasOne("SchoolManagement.Models.Teacher", "Teacher")
+                        .WithMany("Students")
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Teachers");
+                    b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("SchoolManagement.Models.Teacher", b =>
+                {
+                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }

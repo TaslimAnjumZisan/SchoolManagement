@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SchoolManagement.Models;
 
 namespace SchoolManagement.ViewModel.Student
 {
@@ -9,8 +10,10 @@ namespace SchoolManagement.ViewModel.Student
     {
         public StudentDeleteModel()
         {
-            CoordinateList = new List<SelectListItem>();
+            Teachers = new List<SelectListItem>();
 
+            GenderList = new List<SelectListItem>();
+            
         }
         [Key]
         public int Id { get; set; }
@@ -40,7 +43,8 @@ namespace SchoolManagement.ViewModel.Student
 
         [Required]
         public string Password { get; set; }
-        public List<SelectListItem> CoordinateList { get; set; }
+        public List<SelectListItem> Teachers { get; set; }
+        public List<SelectListItem> GenderList { get; set; }
 
 
     }

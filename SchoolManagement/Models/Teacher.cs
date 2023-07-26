@@ -5,6 +5,10 @@ namespace SchoolManagement.Models
 {
     public class Teacher
     {
+        public Teacher()
+        {
+            Students=new HashSet<Student>();
+        }
         [Key]
         public int TeacherId { get; set; }
 
@@ -17,6 +21,8 @@ namespace SchoolManagement.Models
         public string Phone { get; set; }
         
         public string Password { get; set; }
+
+        public ICollection<Student> Students { get; set; }
 
 
 

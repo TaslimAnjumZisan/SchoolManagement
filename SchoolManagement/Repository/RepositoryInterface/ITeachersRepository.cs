@@ -6,5 +6,12 @@ namespace SchoolManagement.Repository.RepositoryInterface
     {
         Task<List<Teacher>> GetAllTeachersAsync();
         Task<Boolean> CreateTeacherAsync(Teacher model, CancellationToken cancellationToken = default);
+        Task<Teacher> GetTeacherBy(int id);
+        Task<Boolean> UpdateTeacher(Teacher model, CancellationToken cancellationToken = default);
+        Task<Teacher> GetTeacherById(int id);
+        Task<Boolean> DeleteTeacher(Teacher teacher, CancellationToken cancellationToken = default);
+
+
+
     }
 }

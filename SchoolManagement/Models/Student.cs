@@ -7,11 +7,15 @@ namespace SchoolManagement.Models
 {
     public class Student
     {
-       
-        [Key]
-        public int Std_Id { get; set; }
+        public Student()
+        {
+              Teacher  = new Teacher();
+        }
 
-        
+        [Key]
+        public int StudentId { get; set; }
+        [ForeignKey("TeacherId")]
+        public int TeacherId { get; set; }
         public string Name { get; set; }
         
         public DateTime AdmitionDate { get; set; } = DateTime.Now;
@@ -29,10 +33,10 @@ namespace SchoolManagement.Models
         
         
         public string Password { get; set; }
-        public virtual int TeacherId { get; set; }
+      
 
-        [ForeignKey("TeacherId")]
-        public virtual Teacher Teachers { get; set; }
+   
+        public virtual Teacher Teacher { get; set; }
 
     }
 }

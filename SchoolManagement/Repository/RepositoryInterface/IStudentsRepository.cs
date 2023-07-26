@@ -11,7 +11,8 @@ namespace SchoolManagement.Repository.RepositoryInterface
         Task<Boolean> UpdateStudent(Student model, CancellationToken cancellationToken = default);
         Task<Student> GetStudentById(int id);
         Task<Boolean> DeleteStudent(Student student,CancellationToken cancellationToken=default);
+        Task<List<StudentIndexModel>> GetAllTeacherStudentsAsync();
 
-      
+
     }
 }
