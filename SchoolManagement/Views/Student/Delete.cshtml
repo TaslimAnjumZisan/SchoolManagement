@@ -1,1 +1,134 @@
-﻿
+﻿@model SchoolManagement.ViewModel.Student.StudentDeleteModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Remove Student</h1>
+<form asp-action="Delete">
+    <table>
+
+        <tr>
+            <td>
+                <label asp-for="Name"></label>
+            </td>
+            <td>
+                <input asp-for="Name" placeholder="Enter student name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Age"></label>
+            </td>
+            <td>
+                <input asp-for="Age" placeholder="Enter student age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>
+                <label asp-for="Gender"></label>
+            </td>
+            <td>
+                <div class="form-check">
+                    <input asp-for="Gender" class="form-check-input" name="Gender" type="checkbox" value="" id="male">
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+
+            </td>
+
+            <td>
+                <div class="form-check">
+                    <input asp-for="Gender" class="form-check-input" name="Gender" type="checkbox" value="" id="female">
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+
+            </td>
+
+            <td>
+                <div class="form-check">
+
+                    <input asp-for="Gender" class="form-check-input" name="Gender" type="checkbox" value="" id="other">
+                    <label class="form-check-label" for="other">Other</label>
+                </div>
+
+            </td>
+
+        </tr>
+
+
+
+        @*<tr>
+        <td>
+        <label asp-for="TeacherId"></label>
+        </td>
+        <td>
+        <select asp-for="TeacherId" asp-items="Model.TeacherId" name="TeacherId" class="form-control">
+        </select>
+        <span asp-validation-for="TeacherId" class="text-danger"></span>
+        </td>
+        </tr>*@
+
+        @*<tr>
+        <td>
+        <label asp-for=""></label>
+        </td>
+        <td>
+        <select asp-for="" asp-items="" name="" class="form-control">
+        </select>
+        <span asp-validation-for="" class="text-danger"></span>
+        </td>
+        </tr>*@
+        <tr>
+            <td>
+                <label asp-for="Email"></label>
+            </td>
+            <td>
+                <input asp-for="Email" placeholder="Enter student email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label asp-for="Phone"></label>
+            </td>
+            <td>
+                <input asp-for="Phone" placeholder="Enter student contact" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label asp-for="Cgpa"></label>
+            </td>
+            <td>
+                <input asp-for="Cgpa" placeholder="Enter student contact" class="form-control" />
+                <span asp-validation-for="Cgpa" class="text-danger"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label asp-for="Password"></label>
+            </td>
+            <td>
+                <input asp-for="Password" type="password" placeholder="Enter student password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-primary" type="submit">Delete</button>
+                <a asp-action="Index" class="btn btn-success" asp-controller="Student">Back to List</a>
+            </td>
+        </tr>
+    </table>
+
+</form>
+
+

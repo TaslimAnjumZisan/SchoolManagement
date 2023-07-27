@@ -23,7 +23,7 @@ namespace SchoolManagement.Models
         public int Age { get; set; }
 
         
-        public Boolean IsGender { get; set; }
+        public string Gender { get; set; }
         
         public string Email { get; set; }
         

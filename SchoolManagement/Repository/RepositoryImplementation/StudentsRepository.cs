@@ -38,7 +38,7 @@ namespace SchoolManagement.Repository.RepositoryImplementation
                                   StudentId=d.StudentId,
                                   Age=d.Age,
                                   Cgpa=d.Cgpa,
-                                  IsGender=d.IsGender,
+                                  Gender=d.Gender,
                                   Email=d.Email,
                                   Phone=d.Phone,
                                   Password=d.Password,
@@ -73,7 +73,7 @@ namespace SchoolManagement.Repository.RepositoryImplementation
         public async Task<Boolean>UpdateStudent(Student model, CancellationToken cancellation = default)
         {
             var isUpdate = false;
-            var exists= await _schoolManagementDbContext.Students.AnyAsync(x=> x.Email.Trim().ToLower()==model.Email.Trim().ToLower()&& x.StudentId == model.StudentId);
+            var exists= await _schoolManagementDbContext.Students.AnyAsync(x=> x.Email.Trim().ToLower()==model.Email.Trim().ToLower() && x.StudentId == model.StudentId);
             if(cancellation.IsCancellationRequested==false)
             {
                 if(!exists)

@@ -8,7 +8,7 @@ namespace SchoolManagement.ViewModel.Teacher
     {
         public TeacherCreateModel()
         {
-            //Students = new HashSet<Student>();
+            Students = new HashSet<StudentCreateModel>();
         }
         [Key]
         public int TeacherId { get; set; }
@@ -25,6 +25,6 @@ namespace SchoolManagement.ViewModel.Teacher
 
         public string Password { get; set; }
 
-        //public ICollection<Student> Students { get; set; }
+        public ICollection<StudentCreateModel> Students { get; set; }
     }
 }

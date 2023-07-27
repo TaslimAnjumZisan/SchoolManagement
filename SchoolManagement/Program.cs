@@ -17,10 +17,13 @@ namespace SchoolManagement
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<SchoolManagementDbContext>(Options=>Options.UseSqlServer(
-                builder.Configuration.GetConnectionString("DefaultConnection")
-                
-                ));
+           
+
+            builder.Services.AddDbContext<SchoolManagementDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+                options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+            });
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             builder.Services.AddScoped<IStudentsManager, StudentManager>();
             builder.Services.AddScoped<IStudentsRepository, StudentsRepository>();

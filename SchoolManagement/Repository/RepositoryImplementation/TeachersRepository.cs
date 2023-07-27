@@ -66,13 +66,13 @@ namespace SchoolManagement.Repository.RepositoryImplementation
             return teacher;
         }
 
-        public async Task<Boolean>DeleteTeacher(Teacher teacher, CancellationToken cancellationToken=default)
+        public async Task<Boolean>DeleteTeacher(Teacher model, CancellationToken cancellationToken=default)
         {
             var isDelete = false;
-            var exist= await _schoolManagementDbContext.Teachers.Where(x=> x.TeacherId==teacher.TeacherId).SingleOrDefaultAsync();
+            var exist= await _schoolManagementDbContext.Teachers.Where(x=> x.TeacherId== model.TeacherId).FirstOrDefaultAsync();
             if(cancellationToken.IsCancellationRequested == false)
             {
-                _schoolManagementDbContext.Teachers.Remove(teacher);
+                _schoolManagementDbContext.Teachers.Remove(model);
                 await _schoolManagementDbContext.SaveChangesAsync();
                 return isDelete = true;
             }

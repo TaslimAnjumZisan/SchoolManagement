@@ -3,7 +3,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create Student</h1>
+<h1>Register Student</h1>
 <form asp-action="Create">
     <table>
 
@@ -30,11 +30,11 @@
         
         <tr>
             <td>
-                <label asp-for="IsGender"></label>
+                <label asp-for="Gender"></label>
             </td>
             <td>
                 <div class="form-check">
-                    <input asp-for="IsGender" class="form-check-input" name="IsGender" type="checkbox" value="" id="male">
+                    <input asp-for="Gender" class="form-check-input" name="Gender" type="checkbox" value="" id="male">
                     <label class="form-check-label" for="male">Male</label>
                 </div>
 
@@ -42,7 +42,7 @@
 
             <td>
                 <div class="form-check">
-                    <input asp-for="IsGender" class="form-check-input" name="IsGender" type="checkbox" value="" id="female">
+                    <input asp-for="Gender" class="form-check-input" name="Gender" type="checkbox" value="" id="female">
                     <label class="form-check-label" for="female">Female</label>
                 </div>
 
@@ -51,7 +51,7 @@
             <td>
                 <div class="form-check">
 
-                    <input asp-for="IsGender" class="form-check-input" name="IsGender" type="checkbox" value="" id="other">
+                    <input asp-for="Gender" class="form-check-input" name="Gender" type="checkbox" value="" id="other">
                     <label class="form-check-label" for="other">Other</label>
                 </div>
 
@@ -61,9 +61,18 @@
         
         
 
+        @*<tr>
+            <td>
+                <label asp-for="TeacherId"></label>
+            </td>
+            <td>
+                <select asp-for="TeacherId" asp-items="Model.TeacherId" name="TeacherId" class="form-control">
+                </select>
+                <span asp-validation-for="TeacherId" class="text-danger"></span>
+            </td>
+        </tr>*@
 
-
-        <tr>
+        @*<tr>
             <td>
                 <label asp-for=""></label>
             </td>
@@ -72,7 +81,7 @@
                 </select>
                 <span asp-validation-for="" class="text-danger"></span>
             </td>
-        </tr>
+        </tr>*@
         <tr>
             <td>
                 <label asp-for="Email"></label>

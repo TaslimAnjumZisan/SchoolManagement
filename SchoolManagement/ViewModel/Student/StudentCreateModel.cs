@@ -30,7 +30,7 @@ namespace SchoolManagement.ViewModel.Student
 
         [Required]
 
-        public Boolean IsGender { get; set; }
+        public string Gender { get; set; }
         [Required]
 
         public string Email { get; set; }

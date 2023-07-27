@@ -28,7 +28,7 @@ namespace SchoolManagement.ViewModel.Student
         public int Age { get; set; }
 
         [Required]
-        public bool IsGender { get; set; }
+        public string Gender { get; set; }
         [Required]
         [DisplayName("Email")]
         public string Email { get; set; }
